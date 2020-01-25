@@ -59,5 +59,7 @@ Credits to Nic Raboy for his awesome [blog!](https://www.thepolyglotdeveloper.co
 
 Feel free to clone or fork this project: `https://github.com/deanilvincent/check-password-strength.git`
 
+I'll be glad if you give this project a ★ on [Github](https://github.com/deanilvincent/check-password-strength) :))
+
 ### License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/deanilvincent/check-password-strength/blob/master/LICENSE.md/) file for details.
