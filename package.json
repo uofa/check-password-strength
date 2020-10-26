@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deanilvincent/check-password-strength.git"
+    "url": "git+https://github.com/uofa/check-password-strength.git"
   },
   "keywords": [
     "npm",
@@ -29,12 +29,12 @@
     "strength-password-checker",
     "pass-strength"
   ],
-  "author": "deanilvincent",
+  "author": "uofa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/deanilvincent/check-password-strength/issues"
+    "url": "https://github.com/uofa/check-password-strength/issues"
   },
-  "homepage": "https://github.com/deanilvincent/check-password-strength#readme",
+  "homepage": "https://github.com/uofa/check-password-strength#readme",
   "devDependencies": {
     "jest": "^26.4.2"
   }
