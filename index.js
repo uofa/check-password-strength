@@ -1,20 +1,18 @@
 module.exports = (password) => {
-  if (!password) {
-    throw new Error("Password is empty.");
-  }
 
+  const disallowed = '(?=.*[£"\'\\\\])';
   const lowerCaseRegex = "(?=.*[a-z])";
   const upperCaseRegex = "(?=.*[A-Z])";
-  const symbolsRegex = "(?=.*[!@#$%^&*])";
   const numericRegex = "(?=.*[0-9])";
+  const symbolsRegex = '(?=.*[!#$%&()*+,\-.:;<=>?@\\][_\^`{|}~])';
 
   let strength = {
     id: null,
     value: null,
     length: null,
     contains: [],
-  }; 
-  
+  };
+
   // Default
   let passwordContains = [];
 
@@ -54,17 +52,34 @@ module.exports = (password) => {
     ];
   }
 
+  if (new RegExp(`^${disallowed}`).test(password)) {
+    passwordContains = [
+      ...passwordContains,
+      {
+        message: "disallowed",
+      },
+    ];
+  }
+
   const strongRegex = new RegExp(
+    `^((${lowerCaseRegex}${upperCaseRegex}${numericRegex})|(${lowerCaseRegex}${upperCaseRegex}${symbolsRegex})|(${lowerCaseRegex}${numericRegex}${symbolsRegex})|(${upperCaseRegex}${numericRegex}${symbolsRegex}))(?=.{8,})`
+  );
+  const extraStrongRegex = new RegExp(
     `^${lowerCaseRegex}${upperCaseRegex}${numericRegex}${symbolsRegex}(?=.{8,})`
   );
   const mediumRegex = new RegExp(
     `^((${lowerCaseRegex}${upperCaseRegex})|(${lowerCaseRegex}${numericRegex})|(${upperCaseRegex}${numericRegex})|(${upperCaseRegex}${symbolsRegex})|(${lowerCaseRegex}${symbolsRegex})|(${numericRegex}${symbolsRegex}))(?=.{6,})`
   );
 
-  if (strongRegex.test(password)) {
+  if (extraStrongRegex.test(password)) {
+    strength = {
+      id: 3,
+      value: "Extra Strong",
+    };
+  } else if (strongRegex.test(password)) {
     strength = {
       id: 2,
-      value: "Strong",
+      value: "Strong - Can now submit",
     };
   } else if (mediumRegex.test(password)) {
     strength = {
