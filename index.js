@@ -1,6 +1,6 @@
 module.exports = (password) => {
 
-  const disallowed = '(?=.*[£"\'\\\\])';
+  const disallowedRegex = '(?=.*[£"\'\\\\])';
   const lowerCaseRegex = "(?=.*[a-z])";
   const upperCaseRegex = "(?=.*[A-Z])";
   const numericRegex = "(?=.*[0-9])";
@@ -52,7 +52,7 @@ module.exports = (password) => {
     ];
   }
 
-  if (new RegExp(`^${disallowed}`).test(password)) {
+  if (new RegExp(`^${disallowedRegex}`).test(password)) {
     passwordContains = [
       ...passwordContains,
       {
@@ -79,7 +79,7 @@ module.exports = (password) => {
   } else if (strongRegex.test(password)) {
     strength = {
       id: 2,
-      value: "Strong - Can now submit",
+      value: "Strong",
     };
   } else if (mediumRegex.test(password)) {
     strength = {
