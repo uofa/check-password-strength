@@ -123,3 +123,21 @@ it("Should return numeric length value if request for length", () => {
 it("Should return type of number if request is for length value", () => {
   expect(typeof app("1234").length).toBe("number");
 });
+
+it("Should return disallowed if £ is used", () => {
+  expect(app("£").contains).toStrictEqual([
+    { message: "disallowed" },
+  ]);
+});
+
+it("Should return disallowed if ' is used", () => {
+  expect(app("'").contains).toStrictEqual([
+      { message: "disallowed" },
+  ]);
+});
+
+it("Should return disallowed if \\ is used", () => {
+  expect(app("\\").contains).toStrictEqual([
+    { message: "disallowed" },
+  ]);
+});
