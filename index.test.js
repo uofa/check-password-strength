@@ -1,11 +1,11 @@
 const app = require("./index");
 
-it("Should return strength id 2 if password is strong", () => {
-  expect(app("Asdf12343!").id).toBe(2);
+it("Should return strength id 3 if password is extra strong", () => {
+  expect(app("Asdf12343!").id).toBe(3);
 });
 
-it("Should return strength id 1 if password is medium", () => {
-  expect(app("Asdfasdf2020").id).toBe(1);
+it("Should return strength id 2 if password is strong", () => {
+  expect(app("Asdfasdf2020").id).toBe(2);
 });
 
 it("Should return strength id 1 if password has two combination of symbol + lowercase", () => {
@@ -24,12 +24,12 @@ it("Should return strength id 0 if password is weak", () => {
   expect(app("a").id).toBe(0);
 });
 
-it("Should return strength value 'Strong' if password is strong", () => {
-  expect(app("Asdf12343!").value).toBe("Strong");
+it("Should return strength value 'Extra Strong' if password is extra strong", () => {
+  expect(app("Asdf12343!").value).toBe("Extra Strong");
 });
 
-it("Should return strength value 'Medium' if password is medium", () => {
-  expect(app("Asdf1234").value).toBe("Medium");
+it("Should return strength value 'Strong' if password is strong", () => {
+  expect(app("Asdf1234").value).toBe("Strong");
 });
 
 // pass combination
@@ -122,9 +122,4 @@ it("Should return numeric length value if request for length", () => {
 
 it("Should return type of number if request is for length value", () => {
   expect(typeof app("1234").length).toBe("number");
-});
-
-// exception
-it("Should throw an exception if password parameter is empty", () => {
-  expect(() => app(null)).toThrow("Password is empty.");
 });
