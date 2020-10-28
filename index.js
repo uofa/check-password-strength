@@ -61,11 +61,11 @@ module.exports = (password) => {
     ];
   }
 
-  const strongRegex = new RegExp(
-    `^((${lowerCaseRegex}${upperCaseRegex}${numericRegex})|(${lowerCaseRegex}${upperCaseRegex}${symbolsRegex})|(${lowerCaseRegex}${numericRegex}${symbolsRegex})|(${upperCaseRegex}${numericRegex}${symbolsRegex}))(?=.{8,})`
-  );
   const extraStrongRegex = new RegExp(
     `^${lowerCaseRegex}${upperCaseRegex}${numericRegex}${symbolsRegex}(?=.{8,})`
+  );
+  const strongRegex = new RegExp(
+    `^((${lowerCaseRegex}${upperCaseRegex}${numericRegex})|(${lowerCaseRegex}${upperCaseRegex}${symbolsRegex})|(${lowerCaseRegex}${numericRegex}${symbolsRegex})|(${upperCaseRegex}${numericRegex}${symbolsRegex}))(?=.{8,})`
   );
   const mediumRegex = new RegExp(
     `^((${lowerCaseRegex}${upperCaseRegex})|(${lowerCaseRegex}${numericRegex})|(${upperCaseRegex}${numericRegex})|(${upperCaseRegex}${symbolsRegex})|(${lowerCaseRegex}${symbolsRegex})|(${numericRegex}${symbolsRegex}))(?=.{6,})`
